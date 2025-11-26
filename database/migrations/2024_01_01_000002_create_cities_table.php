@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('cities')) {
+            return; // テーブルが既に存在する場合はスキップ
+        }
+        
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prefecture_id')->constrained()->onDelete('cascade');

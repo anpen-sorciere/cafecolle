@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('chat_rooms')) {
+            return; // テーブルが既に存在する場合はスキップ
+        }
+        
         Schema::create('chat_rooms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('application_id')->unique()->constrained()->onDelete('cascade');

@@ -26,6 +26,9 @@ class HomeController extends Controller
         // 人気求人ランキング
         $popular_jobs = Job::with(['shop.prefecture', 'shop.city'])
             ->where('status', 'active')
+            ->whereHas('shop', function($q) {
+                $q->where('status', 'active');
+            })
             ->withCount('applications')
             ->orderBy('applications_count', 'desc')
             ->orderBy('created_at', 'desc')
@@ -44,6 +47,9 @@ class HomeController extends Controller
         // 最新求人
         $latest_jobs = Job::with(['shop.prefecture', 'shop.city'])
             ->where('status', 'active')
+            ->whereHas('shop', function($q) {
+                $q->where('status', 'active');
+            })
             ->orderBy('created_at', 'desc')
             ->limit(6)
             ->get();

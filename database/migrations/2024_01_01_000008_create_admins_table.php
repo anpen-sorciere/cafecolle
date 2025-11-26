@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('admins')) {
+            return; // テーブルが既に存在する場合はスキップ
+        }
+        
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
             $table->string('username', 50)->unique();

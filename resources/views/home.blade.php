@@ -143,9 +143,9 @@
                         <div class="cc-job-card position-relative mb-3">
                             <span class="cc-ranking-badge">No.{{ $index + 1 }}</span>
                             <div>
-                                <img src="{{ $job->shop->image_url ?? asset('assets/images/CafeColle_NoImage.png') }}" 
+                                <img src="{{ $job->shop?->image_url ?? asset('assets/images/CafeColle_NoImage.png') }}" 
                                      class="cc-job-thumb" 
-                                     alt="{{ $job->shop->name }}"
+                                     alt="{{ $job->shop?->name }}"
                                      loading="lazy">
                             </div>
                             <div class="flex-grow-1">
@@ -155,8 +155,8 @@
                                     </a>
                                 </div>
                                 <div class="cc-job-meta mb-2">
-                                    {{ $job->shop->name }} ｜ 
-                                    {{ $job->shop->prefecture->name ?? '' }}{{ $job->shop->city->name ?? '' }}
+                                    {{ $job->shop?->name }} ｜ 
+                                    {{ $job->shop?->prefecture?->name ?? '' }}{{ $job->shop?->city?->name ?? '' }}
                                     @if($job->salary_min)
                                         ｜ 時給 {{ number_format($job->salary_min) }}円〜
                                         @if($job->salary_max)
@@ -164,7 +164,7 @@
                                         @endif
                                     @endif
                                 </div>
-                                @if($job->shop->concept_type)
+                                @if($job->shop?->concept_type)
                                     <div class="mb-2">
                                         <span class="cc-tag">{{ $job->shop->concept_type }}</span>
                                     </div>
@@ -256,9 +256,9 @@
                     @foreach($latest_jobs as $job)
                         <div class="cc-job-card mb-3">
                             <div>
-                                <img src="{{ $job->shop->image_url ?? asset('assets/images/CafeColle_NoImage.png') }}" 
+                                <img src="{{ $job->shop?->image_url ?? asset('assets/images/CafeColle_NoImage.png') }}" 
                                      class="cc-job-thumb" 
-                                     alt="{{ $job->shop->name }}"
+                                     alt="{{ $job->shop?->name }}"
                                      loading="lazy">
                             </div>
                             <div class="flex-grow-1">
@@ -268,8 +268,8 @@
                                     </a>
                                 </div>
                                 <div class="cc-job-meta mb-2">
-                                    {{ $job->shop->name }} ｜ 
-                                    {{ $job->shop->prefecture->name ?? '' }}{{ $job->shop->city->name ?? '' }}
+                                    {{ $job->shop?->name }} ｜ 
+                                    {{ $job->shop?->prefecture?->name ?? '' }}{{ $job->shop?->city?->name ?? '' }}
                                     @if($job->salary_min)
                                         ｜ 時給 {{ number_format($job->salary_min) }}円〜
                                         @if($job->salary_max)
@@ -277,7 +277,7 @@
                                         @endif
                                     @endif
                                 </div>
-                                @if($job->shop->concept_type)
+                                @if($job->shop?->concept_type)
                                     <div class="mb-2">
                                         <span class="cc-tag">{{ $job->shop->concept_type }}</span>
                                     </div>
@@ -396,9 +396,9 @@
                 @foreach($latest_jobs->take(6) as $job)
                     <div class="cc-job-card mb-3">
                         <div>
-                            <img src="{{ $job->shop->image_url ?? asset('assets/images/CafeColle_NoImage.png') }}" 
+                            <img src="{{ $job->shop?->image_url ?? asset('assets/images/CafeColle_NoImage.png') }}" 
                                  class="cc-job-thumb" 
-                                 alt="{{ $job->shop->name }}"
+                                 alt="{{ $job->shop?->name }}"
                                  loading="lazy">
                         </div>
                         <div class="flex-grow-1">
@@ -408,8 +408,8 @@
                                 </a>
                             </div>
                             <div class="cc-job-meta mb-2">
-                                {{ $job->shop->name }} ｜ 
-                                {{ $job->shop->prefecture->name ?? '' }}{{ $job->shop->city->name ?? '' }}
+                                {{ $job->shop?->name }} ｜ 
+                                {{ $job->shop?->prefecture?->name ?? '' }}{{ $job->shop?->city?->name ?? '' }}
                                 @if($job->salary_min)
                                     ｜ 時給 {{ number_format($job->salary_min) }}円〜
                                     @if($job->salary_max)
@@ -417,7 +417,7 @@
                                     @endif
                                 @endif
                             </div>
-                            @if($job->shop->concept_type)
+                            @if($job->shop?->concept_type)
                                 <div class="mb-2">
                                     <span class="cc-tag">{{ $job->shop->concept_type }}</span>
                                 </div>

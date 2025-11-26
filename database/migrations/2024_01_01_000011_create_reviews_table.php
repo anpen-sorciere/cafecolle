@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (Schema::hasTable('reviews')) {
+            return; // テーブルが既に存在する場合はスキップ
+        }
+        
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('shop_id')->constrained()->onDelete('cascade');

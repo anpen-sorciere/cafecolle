@@ -13,6 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('gender_mst')) {
+            return; // テーブルが既に存在する場合はスキップ
+        }
+        
         Schema::create('gender_mst', function (Blueprint $table) {
             $table->id();
             $table->string('gender', 20)->unique();
