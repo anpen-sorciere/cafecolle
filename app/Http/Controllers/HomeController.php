@@ -13,7 +13,7 @@ class HomeController extends Controller
     /**
      * ホームページ表示
      */
-    public function index()
+    public function index(Request $request)
     {
         // 統計データ
         $stats = [
